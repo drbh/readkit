@@ -1,0 +1,49 @@
+[package]
+name = "readkit-gz"
+description = "gzip decoding (parallel for positioned input, sequential for streams) and a FASTQ-aware parallel gzip encoder"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[features]
+default = ["parallel"]
+## Threads and libdeflate: parallel decoding of positioned input
+## (`ParGzReader`) and the parallel encoder (`GzWriter`). Without it the
+## crate is pure Rust and builds for wasm32-unknown-unknown.
+parallel = ["dep:libdeflater", "dep:libdeflate-sys", "dep:crossbeam-channel"]
+
+[dependencies]
+crc32fast = "1.4"
+flate2 = { version = "1.1", default-features = false }
+memchr = "2.7"
+crossbeam-channel = { version = "0.5", optional = true }
+libdeflater = { version = "1.25", optional = true }
+# For `libdeflate_gzip_decompress_ex`, which libdeflater does not wrap.
+libdeflate-sys = { version = "1.25", optional = true }
+
+[dev-dependencies]
+libdeflater = "1.25"
+
+[[example]]
+name = "recompress"
+required-features = ["parallel"]
+
+[[bench]]
+name = "decode"
+harness = false
+required-features = ["parallel"]
+
+[package.metadata.docs.rs]
+all-features = true
+
+# The inflate backend is chosen per target: macOS's own zlib is
+# the fastest there and needs no C build (libz-sys links the system library);
+# zlib-rs (pure Rust) everywhere else, including wasm32.
+[target.'cfg(target_os = "macos")'.dependencies]
+flate2 = { version = "1.1", default-features = false, features = ["zlib"] }
+
+[target.'cfg(not(target_os = "macos"))'.dependencies]
+flate2 = { version = "1.1", default-features = false, features = ["zlib-rs"] }

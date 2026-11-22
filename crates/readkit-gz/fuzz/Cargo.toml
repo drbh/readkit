@@ -1,0 +1,53 @@
+[package]
+name = "readkit-gz-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+flate2 = "1.1"
+libdeflater = "1.25"
+readkit-gz = { path = ".." }
+
+# Not part of the readkit workspace.
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "fqdeflate_roundtrip"
+path = "fuzz_targets/fqdeflate_roundtrip.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "pgzip_differential"
+path = "fuzz_targets/pgzip_differential.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "pgzip_corrupt"
+path = "fuzz_targets/pgzip_corrupt.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "gzip_members"
+path = "fuzz_targets/gzip_members.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "parallel_members"
+path = "fuzz_targets/parallel_members.rs"
+test = false
+doc = false
+bench = false
