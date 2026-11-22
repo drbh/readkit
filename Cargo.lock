@@ -1065,6 +1065,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "readkit"
+version = "0.1.0"
+dependencies = [
+ "readkit-batch",
+ "readkit-fastq",
+ "readkit-fetch",
+ "readkit-gz",
+ "readkit-io",
+ "readkit-sra",
+]
+
+[[package]]
 name = "readkit-batch"
 version = "0.1.0"
 dependencies = [

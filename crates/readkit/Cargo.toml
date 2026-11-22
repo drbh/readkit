@@ -1,0 +1,49 @@
+[package]
+name = "readkit"
+description = "Zero-copy sequencing read batches and the stages that produce and consume them"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[features]
+default = ["fastq", "gz", "parallel"]
+## Strict FASTQ parsing into batches and writing out of them.
+fastq = ["dep:readkit-fastq"]
+## gzip decoding and encoding. Sequential and pure Rust on its own.
+gz = ["dep:readkit-gz"]
+## Parallel gzip decoding and encoding (threads and libdeflate; not wasm32).
+parallel = ["gz", "readkit-gz/parallel"]
+## Ranged, verified HTTP downloads.
+fetch = ["dep:readkit-fetch"]
+## `.sra` decoding into batches (no HTTP stack).
+sra = ["dep:readkit-sra"]
+## SRA accession resolution (ENA and NCBI S3, over readkit-fetch). Implies `sra`.
+resolve = ["sra", "readkit-sra/resolve"]
+## In-process `.sra` decoding through the NCBI VDB library.
+ngs = ["sra", "readkit-sra/ngs"]
+## Zero-copy export of batches to arrow-rs `RecordBatch`.
+arrow = ["readkit-batch/arrow"]
+
+[dependencies]
+readkit-batch = { path = "../readkit-batch" }
+readkit-io = { path = "../readkit-io" }
+readkit-fastq = { path = "../readkit-fastq", optional = true }
+readkit-gz = { path = "../readkit-gz", optional = true, default-features = false }
+readkit-fetch = { path = "../readkit-fetch", optional = true }
+readkit-sra = { path = "../readkit-sra", optional = true, default-features = false }
+
+[[test]]
+name = "facade"
+required-features = ["fastq", "parallel"]
+
+[[example]]
+name = "count"
+required-features = ["fastq", "parallel"]
+
+[[bench]]
+name = "pipeline"
+harness = false
+required-features = ["fastq", "parallel"]
