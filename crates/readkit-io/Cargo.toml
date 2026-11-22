@@ -1,0 +1,16 @@
+[package]
+name = "readkit-io"
+description = "Batch source and sink traits and a read-ahead helper for readkit stages"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+readkit-batch = { path = "../readkit-batch" }
+
+[[bench]]
+name = "read_ahead"
+harness = false
