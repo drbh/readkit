@@ -1,0 +1,6 @@
+# Recorded S3 HEAD responses: run, status, content-length, ETag, and the
+# content-length of `?partNumber=1` for multipart ETags.
+SRR12999707 200 16143261 "1f3870be274f6c49b3e31a0c6728957f" -
+SRR13638690 200 713058679 "6a0b7e5ebbde2b33a1f7de3d2e5c4a1e-85" 8388608
+SRR13638687 200 1283701816 "c4ca4238a0b923820dcc509a6f75849b-153" 8388608
+SRR13638686 404 - - -

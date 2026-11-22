@@ -1117,6 +1117,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "readkit-sra"
+version = "0.1.0"
+dependencies = [
+ "cc",
+ "libc",
+ "libdeflater",
+ "readkit-batch",
+ "readkit-fastq",
+ "readkit-fetch",
+ "readkit-io",
+ "serde_json",
+]
+
+[[package]]
 name = "reqwest"
 version = "0.13.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
