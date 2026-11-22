@@ -8,7 +8,7 @@ stages in one program pass reads as owned, columnar batches. no FASTQ text in be
 
 ```toml
 [dependencies]
-readkit = { git = "https://github.com/drbh/readkit.git" }
+readkit = "0.1.1"
 ```
 
 ## usage
@@ -26,5 +26,7 @@ let records = readkit::pump(source, &mut sink)?;
 anything that is a `BatchSource` can be chained, and each stage reads at most one batch ahead
 
 `fastq`, `gz` and `parallel` are on by default. `fetch`, `sra`, `resolve`, `ngs` and `arrow` are opt in
+
+local SRA decoding uses `fasterq-dump` from the SRA Toolkit by default. on macOS and Linux, `ngs` enables in-process decoding through `libncbi-ngs`. set `NGS_PREFIX` to the toolkit installation prefix if it differs from `/opt/homebrew`
 
 the core is pure rust and builds for wasm32 with `--no-default-features --features fastq,gz`

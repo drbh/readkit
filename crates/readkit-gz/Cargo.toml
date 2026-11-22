@@ -4,7 +4,7 @@ description = "gzip decoding (parallel for positioned input, sequential for stre
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
-license.workspace = true
+license-file.workspace = true
 repository.workspace = true
 publish.workspace = true
 

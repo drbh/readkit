@@ -1066,7 +1066,7 @@ dependencies = [
 
 [[package]]
 name = "readkit"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "readkit-batch",
  "readkit-fastq",
@@ -1078,7 +1078,7 @@ dependencies = [
 
 [[package]]
 name = "readkit-batch"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "arrow-array",
  "arrow-buffer",
@@ -1087,7 +1087,7 @@ dependencies = [
 
 [[package]]
 name = "readkit-fastq"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "libdeflater",
  "memchr",
@@ -1099,7 +1099,7 @@ dependencies = [
 
 [[package]]
 name = "readkit-fetch"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "blake3",
  "md-5",
@@ -1111,7 +1111,7 @@ dependencies = [
 
 [[package]]
 name = "readkit-gz"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "crc32fast",
  "crossbeam-channel",
@@ -1123,14 +1123,14 @@ dependencies = [
 
 [[package]]
 name = "readkit-io"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "readkit-batch",
 ]
 
 [[package]]
 name = "readkit-sra"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cc",
  "libc",

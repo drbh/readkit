@@ -4,7 +4,8 @@ description = "Zero-copy sequencing read batches and the stages that produce and
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
-license.workspace = true
+license-file.workspace = true
+readme.workspace = true
 repository.workspace = true
 publish.workspace = true
 
@@ -28,12 +29,17 @@ ngs = ["sra", "readkit-sra/ngs"]
 arrow = ["readkit-batch/arrow"]
 
 [dependencies]
-readkit-batch = { path = "../readkit-batch" }
-readkit-io = { path = "../readkit-io" }
-readkit-fastq = { path = "../readkit-fastq", optional = true }
-readkit-gz = { path = "../readkit-gz", optional = true, default-features = false }
-readkit-fetch = { path = "../readkit-fetch", optional = true }
-readkit-sra = { path = "../readkit-sra", optional = true, default-features = false }
+readkit-batch.workspace = true
+readkit-io.workspace = true
+readkit-fastq = { workspace = true, optional = true }
+readkit-gz = { workspace = true, optional = true }
+readkit-fetch = { workspace = true, optional = true }
+readkit-sra = { workspace = true, optional = true }
+
+[package.metadata.docs.rs]
+all-features = true
+# The ngs shim uses pthreads.
+targets = ["x86_64-unknown-linux-gnu"]
 
 [[test]]
 name = "facade"

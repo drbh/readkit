@@ -4,12 +4,12 @@ description = "Batch source and sink traits and a read-ahead helper for readkit 
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
-license.workspace = true
+license-file.workspace = true
 repository.workspace = true
 publish.workspace = true
 
 [dependencies]
-readkit-batch = { path = "../readkit-batch" }
+readkit-batch.workspace = true
 
 [[bench]]
 name = "read_ahead"

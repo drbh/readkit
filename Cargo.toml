@@ -3,9 +3,18 @@ resolver = "3"
 members = ["crates/*"]
 
 [workspace.package]
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 rust-version = "1.88"
-license = "MIT"
+license-file = "LICENSE"
+readme = "README.md"
 repository = "https://github.com/drbh/readkit"
-publish = false
+publish = ["crates-io"]
+
+[workspace.dependencies]
+readkit-batch = { version = "0.1.1", path = "crates/readkit-batch" }
+readkit-io = { version = "0.1.1", path = "crates/readkit-io" }
+readkit-fastq = { version = "0.1.1", path = "crates/readkit-fastq" }
+readkit-gz = { version = "0.1.1", path = "crates/readkit-gz", default-features = false }
+readkit-fetch = { version = "0.1.1", path = "crates/readkit-fetch" }
+readkit-sra = { version = "0.1.1", path = "crates/readkit-sra", default-features = false }
