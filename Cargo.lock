@@ -1074,6 +1074,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "readkit-fastq"
+version = "0.1.0"
+dependencies = [
+ "libdeflater",
+ "memchr",
+ "readkit-batch",
+ "readkit-gz",
+ "readkit-io",
+ "serde_json",
+]
+
+[[package]]
 name = "readkit-fetch"
 version = "0.1.0"
 dependencies = [

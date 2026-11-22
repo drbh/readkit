@@ -1,0 +1,27 @@
+[package]
+name = "readkit-fastq"
+description = "Strict FASTQ parsing into readkit batches and FASTQ writing out of them"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[dependencies]
+memchr = { version = "2.7", default-features = false, features = ["std"] }
+readkit-batch = { path = "../readkit-batch" }
+readkit-io = { path = "../readkit-io" }
+
+[dev-dependencies]
+libdeflater = "1.25"
+readkit-gz = { path = "../readkit-gz" }
+serde_json = "1"
+
+[[bench]]
+name = "parse"
+harness = false
+
+[[bench]]
+name = "paired"
+harness = false
