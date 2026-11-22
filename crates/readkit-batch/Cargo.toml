@@ -1,0 +1,26 @@
+[package]
+name = "readkit-batch"
+description = "Columnar, pooled, Arrow-compatible batches of sequencing reads"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+[features]
+default = []
+## Zero-copy export to arrow-rs `RecordBatch`.
+arrow = ["dep:arrow-array", "dep:arrow-buffer", "dep:arrow-schema"]
+
+[dependencies]
+arrow-array = { version = "60", optional = true, default-features = false }
+arrow-buffer = { version = "60", optional = true, default-features = false }
+arrow-schema = { version = "60", optional = true, default-features = false }
+
+[[bench]]
+name = "build"
+harness = false
+
+[package.metadata.docs.rs]
+all-features = true
